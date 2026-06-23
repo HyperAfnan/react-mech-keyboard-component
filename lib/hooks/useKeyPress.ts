@@ -11,6 +11,7 @@ export function useKeyPress(
 
   useEffect(() => {
     const handleDown = (e: KeyboardEvent) => {
+      if (e.repeat) return;
       e.preventDefault();
       pressKey(e.code);
       play(e.code);
