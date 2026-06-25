@@ -10,9 +10,30 @@ export function useKeyPress(
   const storeApi = useKeyboardStoreApi();
 
   useEffect(() => {
+    const BLOCKED_KEYS = new Set([
+      "Tab",
+      "F1",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F10",
+      "F11",
+      "/",
+    ]);
+
+    const releaseAll = () => {
+      storeApi.getState().activeKeys.forEach((code) => {
+        storeApi.getState().releaseKey(code);
+      });
+    };
+
     const handleDown = (e: KeyboardEvent) => {
       if (e.repeat) return;
-      e.preventDefault();
+      if (BLOCKED_KEYS.has(e.key) || BLOCKED_KEYS.has(e.code)) {
+        e.preventDefault();
+      }
       pressKey(e.code);
       play(e.code);
     };
@@ -20,12 +41,13 @@ export function useKeyPress(
     const handleUp = (e: KeyboardEvent) => {
       releaseKey(e.code);
       release(e.code);
-    };
-
-    const releaseAll = () => {
-      storeApi.getState().activeKeys.forEach((code) => {
-        storeApi.getState().releaseKey(code);
-      });
+      if (
+        e.code.startsWith("Control") ||
+        e.code.startsWith("Alt") ||
+        e.code.startsWith("Meta")
+      ) {
+        releaseAll();
+      }
     };
 
     window.addEventListener("keydown", handleDown);
