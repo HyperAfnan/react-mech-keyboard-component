@@ -53,7 +53,7 @@ function KeyComponent({ keyDef }: KeyProps) {
   const isPressed = (() => {
     const isShiftPressed = activeKeys.has("ShiftLeft") || activeKeys.has("ShiftRight");
     const isMetaPressed = activeKeys.has("MetaLeft") || activeKeys.has("MetaRight");
-    
+
     if (isShiftPressed && isMetaPressed) {
       if (keyDef.code.startsWith("Shift")) {
         return false;
@@ -139,9 +139,9 @@ function KeyComponent({ keyDef }: KeyProps) {
 
   const appleFontClass = isApple
     ? cn(
-        "font-['-apple-system,BlinkMacSystemFont,\"SF_Pro_Text\",\"Segoe_UI\",Roboto,Helvetica,Arial,sans-serif'] font-normal tracking-[-0.01em]",
-        keyDef.variant === "alpha" ? "text-[9.5px] uppercase" : "text-[8px] opacity-85"
-      )
+      "font-['-apple-system,BlinkMacSystemFont,\"SF_Pro_Text\",\"Segoe_UI\",Roboto,Helvetica,Arial,sans-serif'] font-normal tracking-[-0.01em]",
+      keyDef.variant === "alpha" ? "text-[9.5px] uppercase" : "text-[8px] opacity-85"
+    )
     : "";
 
   const renderKeyContent = () => {
@@ -252,7 +252,7 @@ function KeyComponent({ keyDef }: KeyProps) {
         height: keyDef.height ?? (isApple ? (isHalfHeightArrow ? 16.5 : 38) : 44),
         marginLeft: keyDef.marginLeft,
         transform: isPressed
-          ? (isApple ? "none" : "translateY(6px) scale(0.98)")
+          ? (isApple ? "translateY(1px) scale(0.99)" : "translateY(6px) scale(0.98)")
           : "none",
         transition: "transform 0.08s cubic-bezier(0.2, 0, 0, 1)",
       }}
