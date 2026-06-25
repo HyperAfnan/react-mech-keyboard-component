@@ -692,9 +692,9 @@ export const KEYBOARD_ROWS: KeyRow[] = [
         centerLabel: true,
       },
       {
-        id: "key-menu",
-        code: "ContextMenu",
-        label: "☰",
+        id: "key-winr",
+        code: "MetaRight",
+        label: "⊞",
         variant: "modifier",
         width: 40,
         centerLabel: true,

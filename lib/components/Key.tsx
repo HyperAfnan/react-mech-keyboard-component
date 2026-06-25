@@ -47,13 +47,30 @@ const TABLER_ICONS: Record<string, React.ComponentType<{ className?: string; str
 
 function KeyComponent({ keyDef }: KeyProps) {
   const variant = useKeyboardStore((s) => s.variant);
+  const isApple = variant === "apple-magic";
+  const activeKeys = useKeyboardStore((s) => s.activeKeys);
 
-  const isPressed = useKeyboardStore((s) => s.activeKeys.has(keyDef.code));
+  const isPressed = (() => {
+    const isShiftPressed = activeKeys.has("ShiftLeft") || activeKeys.has("ShiftRight");
+    const isMetaPressed = activeKeys.has("MetaLeft") || activeKeys.has("MetaRight");
+    
+    if (isShiftPressed && isMetaPressed) {
+      if (keyDef.code.startsWith("Shift")) {
+        return false;
+      }
+      if (keyDef.code === "MetaRight") {
+        return true;
+      }
+      if (keyDef.code === "MetaLeft") {
+        return false;
+      }
+    }
+    return activeKeys.has(keyDef.code);
+  })();
+
   const pressKey = useKeyboardStore((s) => s.pressKey);
   const releaseKey = useKeyboardStore((s) => s.releaseKey);
   const { play, release } = useSoundEngine();
-
-  const isApple = variant === "apple-magic";
 
   let appleCornerClass = "";
   if (isApple) {
@@ -84,16 +101,19 @@ function KeyComponent({ keyDef }: KeyProps) {
 
   const handlePressStart = (e: MouseEvent | TouchEvent) => {
     e.preventDefault();
+    if (activeKeys.has(keyDef.code)) return;
     pressKey(keyDef.code);
     play(keyDef.code);
   };
 
   const handlePressEnd = () => {
+    if (!activeKeys.has(keyDef.code)) return;
     releaseKey(keyDef.code);
     release(keyDef.code);
   };
 
   const handleLeave = () => {
+    if (!activeKeys.has(keyDef.code)) return;
     releaseKey(keyDef.code);
   };
 
@@ -101,6 +121,7 @@ function KeyComponent({ keyDef }: KeyProps) {
     if (e.key !== "Enter" && e.key !== " ") return;
     if (e.repeat) return;
     e.preventDefault();
+    if (activeKeys.has(keyDef.code)) return;
     pressKey(keyDef.code);
     play(keyDef.code);
   };
@@ -108,6 +129,7 @@ function KeyComponent({ keyDef }: KeyProps) {
   const handleKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key !== "Enter" && e.key !== " ") return;
     e.preventDefault();
+    if (!activeKeys.has(keyDef.code)) return;
     releaseKey(keyDef.code);
     release(keyDef.code);
   };

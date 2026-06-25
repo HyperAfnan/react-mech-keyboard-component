@@ -34,11 +34,13 @@ export function useKeyPress(
       if (BLOCKED_KEYS.has(e.key) || BLOCKED_KEYS.has(e.code)) {
         e.preventDefault();
       }
+      if (storeApi.getState().activeKeys.has(e.code)) return;
       pressKey(e.code);
       play(e.code);
     };
 
     const handleUp = (e: KeyboardEvent) => {
+      if (!storeApi.getState().activeKeys.has(e.code)) return;
       releaseKey(e.code);
       release(e.code);
       if (
