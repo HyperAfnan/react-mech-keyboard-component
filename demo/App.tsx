@@ -19,7 +19,7 @@ function App() {
         <div className="flex flex-col p-4 sm:p-8 items-center justify-center space-y-6 sm:space-y-8 md:space-y-10 border-b border-zinc-800/80">
           <div className="flex max-w-3xl flex-col text-center">
             <h1 className="mb-3 text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">
-              Interactive keyboard for React
+              Interactive Keyboards For Your App
             </h1>
             <p className="text-sm sm:text-base md:text-lg lg:text-2xl text-zinc-400">
               Multiple layouts, themes, and authentic typing sounds
@@ -30,7 +30,7 @@ function App() {
 
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-6 px-4 pb-6 pt-6 sm:pb-8 lg:pb-10 border-b border-zinc-800/40 bg-zinc-900/10">
+        <div className="flex flex-col items-center justify-center gap-6 px-4 pb-6 pt-6 sm:pb-8 lg:pb-10 border-t border-zinc-800/40 bg-zinc-900/10">
           <div className="flex flex-col items-center gap-2.5">
             <div className="flex p-1 rounded-xl bg-zinc-950/80 border border-zinc-800/80 shadow-[inset_0_1.5px_3px_rgba(0,0,0,0.6)]">
               <button
@@ -54,7 +54,7 @@ function App() {
             </div>
           </div>
 
-          <div className="w-full flex justify-center border-t border-zinc-900 pt-5">
+          <div className="w-full flex justify-center pt-5">
             <SoundSelector soundPack={soundPack} onChange={setSoundPack} />
           </div>
         </div>
