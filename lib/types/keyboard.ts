@@ -5,6 +5,7 @@ export interface KeyDef {
   code: string;
   label: string;
   subLabel?: string;
+  symbol?: string;
   variant: KeyVariant;
   width: number;
   height?: number;

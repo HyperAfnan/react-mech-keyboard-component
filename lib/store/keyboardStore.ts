@@ -16,12 +16,14 @@ export interface KeyboardState {
   soundPack: SoundPack;
   toggleSound: () => void;
   setSoundPack: (pack: SoundPack) => void;
+  variant: "keychron-c3" | "apple-magic";
+  setVariant: (variant: "keychron-c3" | "apple-magic") => void;
   cdnBaseUrl: string;
 }
 
 export function createKeyboardStore(
   initialState?: Partial<
-    Pick<KeyboardState, "accent" | "soundPack" | "soundEnabled">
+    Pick<KeyboardState, "accent" | "soundPack" | "soundEnabled" | "variant">
   >,
 ) {
   return createStore<KeyboardState>((set) => ({
@@ -47,6 +49,8 @@ export function createKeyboardStore(
     soundPack: initialState?.soundPack ?? ("cherry-blue" as const),
     toggleSound: () => set((s) => ({ soundEnabled: !s.soundEnabled })),
     setSoundPack: (soundPack) => set({ soundPack }),
+    variant: initialState?.variant ?? "keychron-c3",
+    setVariant: (variant) => set({ variant }),
     cdnBaseUrl: CDN_BASE_URL,
   }));
 }

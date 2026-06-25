@@ -8,7 +8,7 @@ import { KeyboardLayout } from "./KeyboardLayout";
 import { cn } from "../utils";
 
 export interface KeyboardProps {
-  variant?: "keychron-c3";
+  variant?: "keychron-c3" | "apple-magic";
   accent?: AccentColor;
   soundPack?: SoundPack;
   soundEnabled?: boolean;
@@ -16,7 +16,7 @@ export interface KeyboardProps {
 }
 
 export function Keyboard({
-  variant: _variant = "keychron-c3",
+  variant = "keychron-c3",
   accent = "red",
   soundPack = "cherry-blue",
   soundEnabled = true,
@@ -28,6 +28,7 @@ export function Keyboard({
         accent,
         soundPack,
         soundEnabled,
+        variant,
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
@@ -44,6 +45,10 @@ export function Keyboard({
   useEffect(() => {
     store.setState({ soundEnabled });
   }, [store, soundEnabled]);
+
+  useEffect(() => {
+    store.setState({ variant });
+  }, [store, variant]);
 
   return (
     <KeyboardStoreContext.Provider value={store}>

@@ -139,3 +139,39 @@
 .key-accent:not(.key-pressed) {
   animation: accent-pulse 3s ease-in-out infinite;
 }
+
+.style-magic .key-alpha {
+  background: #1c1c1e;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.012);
+  color: #e5e5ea;
+  border-radius: 5px;
+}
+
+.style-magic .key-modifier {
+  background: #1c1c1e;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.012);
+  color: #e5e5ea;
+  border-radius: 5px;
+}
+
+.style-magic .key-pressed {
+  background: #323236 !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+.style-magic #key-arrow-spacer {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.style-magic .key-accent {
+  background: var(--accent);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  border-radius: 5px;
+}
+
