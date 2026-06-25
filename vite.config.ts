@@ -5,12 +5,15 @@ import dts from 'vite-plugin-dts'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import { resolve } from 'path'
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 export default defineConfig({
   plugins: [
     tailwindcss(),
     react(),
     dts({ tsconfigPath: './tsconfig.lib.json' }),
     cssInjectedByJsPlugin(),
+    cloudflare()
   ],
   build: {
     copyPublicDir: false,
