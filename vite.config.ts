@@ -5,6 +5,8 @@ import dts from 'vite-plugin-dts'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import { resolve } from 'path'
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 export default defineConfig(({ command, mode }) => {
   const isDemo = command === 'serve' || mode === 'demo'
 
@@ -27,6 +29,7 @@ export default defineConfig(({ command, mode }) => {
       react(),
       dts({ tsconfigPath: './tsconfig.lib.json' }),
       cssInjectedByJsPlugin(),
+      cloudflare()
     ],
     build: {
       outDir: 'dist',
@@ -47,5 +50,5 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     },
-  }
+  };
 })
