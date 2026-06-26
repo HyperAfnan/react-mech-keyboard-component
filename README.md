@@ -2,7 +2,18 @@
 
  A simple yet powerful mechanical keyboard component for react with multiple key sounds 
 
-![React Keyboards Preview](./assets/preview-keychron-c3.png)
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">
+      <b>Keychron C3 Variant</b><br/>
+      <img src="https://raw.githubusercontent.com/HyperAfnan/react-keyboard/main/assets/preview-keychron-c3.png" alt="Keychron C3 Preview" width="100%"/>
+    </td>
+    <td width="50%" align="center">
+      <b>Apple Magic Keyboard Variant</b><br/>
+      <img src="https://raw.githubusercontent.com/HyperAfnan/react-keyboard/main/assets/preview-apple-magic-keyboard.png" alt="Apple Magic Keyboard Preview" width="100%"/>
+    </td>
+  </tr>
+</table>
 
 ## Installation
 
@@ -43,7 +54,7 @@ export default App;
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `variant` | `"keychron-c3"` | `"keychron-c3"` | The structural layout variant of the keyboard. |
+| `variant` | `"keychron-c3" \| "apple-magic"` | `"keychron-c3"` | The structural layout variant of the keyboard. |
 | `accent` | `"teal" \| "pink" \| "orange" \| "purple" \| "blue" \| "red"` | `"red"` | The highlight color accent applied to special keys (Esc, Enter, Spacebar, active pressed keys). |
 | `soundPack` | `"cherry-blue" \| "cherry-brown" \| "cherry-red" \| "cherry-black" \| "topre" \| "creams" \| "none"` | `"cherry-blue"` | The mechanical switch sound profile to trigger on keypress. Use `"none"` to mute switch sound. |
 | `soundEnabled` | `boolean` | `true` | Globally toggles sound output. |
@@ -58,10 +69,6 @@ export default App;
 - `topre`: Topre - Thocky, tactile, premium feel.
 - `creams`: NovelKeys Creams - Linear and buttery-smooth.
 - `none`: Silent - No sound output.
-
-## Future Plans
-
-* **Apple Magic Keyboard**: A chiclet-style ultra-thin layout with membrane-like acoustics.
 
 ## License
 
