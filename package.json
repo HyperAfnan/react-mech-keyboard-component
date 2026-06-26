@@ -1,6 +1,6 @@
 {
   "name": "react-keyboards",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "type": "module",
   "description": "A premium on-screen mechanical keyboard React component with realistic key animations and sound profiles.",
   "main": "dist/react-keyboards.umd.cjs",
